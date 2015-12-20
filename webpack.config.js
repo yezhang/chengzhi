@@ -1,6 +1,5 @@
 var path = require('path')
 var webpack = require('webpack')
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -9,8 +8,11 @@ module.exports = {
             'webpack-hot-middleware/client',
             './src/index'
         ],
+
         vendors: ['jquery', 'bootstrap']
     },
+
+
     output: {
         path: path.join(__dirname, 'static'),
         filename: 'bundle.js',
@@ -20,7 +22,6 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.DedupePlugin(), //去掉重复代码
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
     ],
@@ -42,15 +43,24 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|bmp)$/,
-                loader: 'url-loader?limit=8192'
+                loader: 'url-loader?limit=8192&name=[path][name].[ext]?[hash]&context=src/assets'
             },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
+                loader: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]?[hash]&context=node_modules'
             },
-            {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
-            {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
-            {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
+            {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/octet-stream&name=[path][name].[ext]?[hash]&context=node_modules'
+            },
+            {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file?name=[path][name].[ext]?[hash]&context=node_modules'
+            },
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=image/svg+xml&name=[path][name].[ext]?[hash]&context=node_modules'
+            }
         ]
     }
 };
