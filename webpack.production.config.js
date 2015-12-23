@@ -3,7 +3,6 @@ var webpack = require('webpack')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
     entry: {
         app: [
             'webpack-hot-middleware/client',
@@ -13,16 +12,12 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'static'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: '/static/'
     },
 
     plugins: [
-        //new webpack.ProvidePlugin({
-        //    $: "jquery",
-        //    jQuery: "jquery"
-        //}),
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+        new webpack.optimize.CommonsChunkPlugin('vendors'),
         new ExtractTextPlugin("[name].css"),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(), //去掉重复代码
@@ -51,7 +46,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|bmp)$/,
-                loader: 'url-loader?limit=8192'
+                loader: 'url-loader?limit=500'
             },
             {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
             {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},

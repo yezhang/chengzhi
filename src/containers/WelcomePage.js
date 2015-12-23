@@ -18,6 +18,9 @@ export default class WelcomePage extends Component {
                              />
                     </div>
 
+                    <div style={{minHeight:'400px'}}>
+                        {this.props.children}
+                    </div>
                 </div>
 
             </div>

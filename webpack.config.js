@@ -3,6 +3,7 @@ var webpack = require('webpack')
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
+
     entry: {
         app: [
             'webpack-hot-middleware/client',
@@ -15,16 +16,19 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, 'static'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: '/static/'
     },
 
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendors"
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoErrorsPlugin()
     ],
+
     module: {
         loaders: [
             {
@@ -37,7 +41,8 @@ module.exports = {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
             },
-            {//处理bootstrap的依赖.
+            {
+                //处理bootstrap的依赖.
                 test: /bootstrap\/js\//,
                 loader: "imports?jQuery=jquery"
             },
@@ -47,19 +52,19 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]?[hash]&context=node_modules'
+                loader: 'url?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]&context=node_modules'
             },
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream&name=[path][name].[ext]?[hash]&context=node_modules'
+                loader: 'url?limit=10000&mimetype=application/octet-stream&name=[path][name].[ext]&context=node_modules'
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file?name=[path][name].[ext]?[hash]&context=node_modules'
+                loader: 'file?name=[path][name].[ext]&context=node_modules'
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=image/svg+xml&name=[path][name].[ext]?[hash]&context=node_modules'
+                loader: 'url?limit=10000&mimetype=image/svg+xml&name=[path][name].[ext]&context=node_modules'
             }
         ]
     }
