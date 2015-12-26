@@ -9,3 +9,6 @@ static/vendors.js.map
 static/img
 static/bootstrap
 
+# 忽略图片素材
+*.png
+
