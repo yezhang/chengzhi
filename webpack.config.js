@@ -2,7 +2,9 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+    //devtool: 'source-map', //debug in webstorm
     devtool: 'cheap-module-eval-source-map',
+    //devtool: 'eval-source-map',
 
     entry: {
         app: [
@@ -20,7 +22,19 @@ module.exports = {
         publicPath: '/static/'
     },
 
+    //externals: {
+    //    // require("jquery") is external and available
+    //    //  on the global var jQuery
+    //    "jquery": "jQuery",
+    //    "jquery": "$"
+    //},
+
     plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery"
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendors"
         }),
@@ -37,14 +51,18 @@ module.exports = {
                 exclude: /node_modules/,
                 include: __dirname
             },
+            //{
+            //    //处理bootstrap的依赖.
+            //    test: /bootstrap\/js\//,
+            //    loader: "imports?jQuery=jquery"
+            //},
+            {
+                test: require.resolve('jquery'),
+                loader: 'expose?jQuery'
+            },
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
-            },
-            {
-                //处理bootstrap的依赖.
-                test: /bootstrap\/js\//,
-                loader: "imports?jQuery=jquery"
             },
             {
                 test: /\.(png|jpg|bmp)$/,
