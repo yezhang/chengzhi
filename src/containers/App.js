@@ -1,75 +1,32 @@
+/**
+ * Created by better on 15/12/19.
+ */
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { pushState } from 'redux-router'
-import Explore from '../components/Explore'
-import { resetErrorMessage } from '../actions'
+import Header from './Header'
+import CardSlider from '../components/slider/CardSlider'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleDismissClick = this.handleDismissClick.bind(this)
-  }
+import '../assets/css/main.css'
 
-  handleDismissClick(e) {
-    this.props.resetErrorMessage()
-    e.preventDefault()
-  }
+export default class WelcomePage extends Component {
+    render() {
+        return (
+            <div>
+                <Header/>
+                <div className="container cz-body">
+                    <div className="row">
+                        <CardSlider></CardSlider>
+                        {
+                        //<img className="img-thumbnail center-block" src={red1} alt="Chania"
+                        //     />
+                        }
+                    </div>
 
-  handleChange(nextValue) {
-    this.props.pushState(null, `/${nextValue}`)
-  }
+                    <div style={{minHeight:'400px'}}>
+                        {this.props.children}
+                    </div>
+                </div>
 
-  renderErrorMessage() {
-    const { errorMessage } = this.props
-    if (!errorMessage) {
-      return null
+            </div>
+        );
     }
-
-    return (
-      <p style={{ backgroundColor: '#e99', padding: 10 }}>
-        <b>{errorMessage}</b>
-        {' '}
-        (<a href="#"
-            onClick={this.handleDismissClick}>
-          Dismiss
-        </a>)
-      </p>
-    )
-  }
-
-  render() {
-    const { children, inputValue } = this.props
-    return (
-      <div>
-        <Explore value={inputValue}
-                 onChange={this.handleChange} />
-        <hr />
-        {this.renderErrorMessage()}
-        {children}
-      </div>
-    )
-  }
 }
-
-App.propTypes = {
-  // Injected by React Redux
-  errorMessage: PropTypes.string,
-  resetErrorMessage: PropTypes.func.isRequired,
-  pushState: PropTypes.func.isRequired,
-  inputValue: PropTypes.string.isRequired,
-  // Injected by React Router
-  children: PropTypes.node
-}
-
-function mapStateToProps(state) {
-  return {
-    errorMessage: state.errorMessage,
-    inputValue: state.router.location.pathname.substring(1)
-  }
-}
-
-export default connect(mapStateToProps, {
-  resetErrorMessage,
-  pushState
-})(App)
