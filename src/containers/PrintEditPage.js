@@ -141,6 +141,11 @@ export default class PrintEditPage extends Component {
 
         return (
             <div >
+
+                    <div className="page-header">
+                        <h1>设计上层文字</h1>
+                    </div>
+
                 <div className="row">
                     <div className="col-md-9">
                         <div className="panel panel-default">
