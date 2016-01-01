@@ -2,8 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-    //devtool: 'source-map', //debug in webstorm
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map', //debug in webstorm
+    //devtool: 'cheap-module-eval-source-map',
     //devtool: 'eval-source-map',
 
     entry: {
@@ -43,10 +43,14 @@ module.exports = {
         new webpack.NoErrorsPlugin()
     ],
 
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 loaders: ['babel'],
                 exclude: /node_modules/,
                 include: __dirname

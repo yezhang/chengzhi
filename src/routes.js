@@ -1,14 +1,16 @@
 import React from 'react'
-import { Route } from 'react-router'
-import WelcomePage from './containers/WelcomePage'
+import { Route, IndexRoute } from 'react-router'
 import App from './containers/App'
-import UserPage from './containers/UserPage'
-import RepoPage from './containers/RepoPage'
+import WelcomePage from './containers/WelcomePage'
 import LoginPage from './containers/LoginPage'
+import BillPage from './containers/BillPage'
+import PrintEditPage from './containers/PrintEditPage'
 
 export default (
-  <Route path="/" component={WelcomePage}>
-    <Route path="login"
-           component={LoginPage} />
-  </Route>
+    <Route path="/" component={App}>
+        <IndexRoute component={WelcomePage}/>
+        <Route path="login" component={LoginPage}/>
+        <Route path="bill" component={BillPage}/>
+        <Route path="edit" component={PrintEditPage}/>
+    </Route>
 )

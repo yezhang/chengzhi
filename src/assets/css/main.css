@@ -17,3 +17,44 @@ img {
     border: 0 none;
     box-shadow: none;
 }
+
+.cz-canvas {
+    border: 1px;
+
+    width: 100%;
+}
+
+.insideWrapper {
+    position:relative;
+    /*background: rgba(0, 255, 0, .5);*/
+    border:1px solid rgba(0, 0, 0, .5);
+}
+
+.coveredImage {
+    position: relative;
+    padding: 0px;
+    width: auto;
+    height : auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.grayCanvasColor {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.transparentCanvas{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.textCursor:hover {
+    cursor: text;
+}
+
+.helpCursor{
+    cursor: help;
+}

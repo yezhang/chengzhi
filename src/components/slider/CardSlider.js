@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 
 export default class CardSlider extends Component {
 
-
     componentDidMount(){
         //渲染后,加载插件
     }
@@ -41,13 +40,13 @@ export default class CardSlider extends Component {
                         <div className="panel panel-default">
                             <div className="panel-body">
                                 <div className="col-md-4">
-                                    <Link className="thumbnail" style={{border: 0 + 'px'}}><img src={image1} alt=""/></Link>
+                                    <Link to={'#'} className="thumbnail" style={{border: 0 + 'px'}}><img src={image1} alt=""/></Link>
                                 </div>
                                 <div className="col-md-4">
-                                    <Link className="thumbnail" style={{border: 0 + 'px'}}><img src={image2} alt=""/></Link>
+                                    <Link to={'#'} className="thumbnail" style={{border: 0 + 'px'}}><img src={image2} alt=""/></Link>
                                 </div>
                                 <div className="col-md-4">
-                                    <Link className="thumbnail" style={{border: 0 + 'px'}}><img src={image3} alt=""/></Link>
+                                    <Link to={'#'} className="thumbnail" style={{border: 0 + 'px'}}><img src={image3} alt=""/></Link>
                                 </div>
                             </div>
 
