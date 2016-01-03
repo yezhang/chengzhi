@@ -1,3 +1,11 @@
+/* 过度动画 */
+* {
+    transition: All 0.4s ease-in-out;
+    -webkit-transition: All 0.4s ease-in-out;
+    -moz-transition: All 0.4s ease-in-out;
+    -o-transition: All 0.4s ease-in-out;
+}
+
 .cz-body {
     padding-top: 60px;
 }
@@ -8,10 +16,32 @@
     }
 }
 
-img {
-    padding-left: 10px;
-    padding-right: 10px;
+.cz-thinBorder {
+    border: solid 1px rgba(136, 136, 136, 0.51);
 }
+
+.cz-verticalSpace {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.cz-thinHorizontalSpace{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.cz-rotate {
+    -webkit-transform: perspective(140px) rotateY(-10deg) rotateX(5deg) rotateZ(05deg);
+    -moz-transform: perspective(140px) rotateY(-10deg) rotateX(5deg) rotateZ(05deg);
+    -ms-transform: perspective(140px) rotateY(-10deg) rotateX(5deg) rotateZ(05deg);
+    -o-transform: perspective(140px) rotateY(-10deg) rotateX(5deg) rotateZ(05deg);
+    transform: perspective(140px) rotateY(-10deg) rotateX(5deg) rotateZ(05deg);
+}
+
+/*img {*/
+/*padding-left: 10px;*/
+/*padding-right: 10px;*/
+/*}*/
 
 .thumbnail {
     border: 0 none;
@@ -25,16 +55,16 @@ img {
 }
 
 .insideWrapper {
-    position:relative;
+    position: relative;
     /*background: rgba(0, 255, 0, .5);*/
-    border:1px solid rgba(0, 0, 0, .5);
+    border: 1px solid rgba(0, 0, 0, .5);
 }
 
 .coveredImage {
     position: relative;
     padding: 0px;
     width: auto;
-    height : auto;
+    height: auto;
     max-height: 100%;
     max-width: 100%;
 }
@@ -43,7 +73,7 @@ img {
     background-color: rgba(0, 0, 0, .1);
 }
 
-.transparentCanvas{
+.transparentCanvas {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -55,6 +85,6 @@ img {
     cursor: text;
 }
 
-.helpCursor{
+.helpCursor {
     cursor: help;
 }

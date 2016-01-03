@@ -22,7 +22,7 @@ export default class NewBill extends Component {
                         <div className="form-group">
                             <label htmlFor="inputEmail3" className="col-sm-2 control-label">祝福语</label>
                             <div className="col-sm-10">
-                                            <textarea className="form-control" rows="3"
+                                            <textarea className="form-control" rows="2"
                                                       placeholder="送给对方的祝福"></textarea>
                             </div>
                         </div>

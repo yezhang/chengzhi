@@ -14,7 +14,7 @@ export default class BillPage extends Component {
                 <div className="row">
                     <div className="col-md-3">
                         <ul className="nav nav-pills nav-stacked">
-                            <li role="presentation" className="active">
+                            <li role="presentation">
                                 <Link to={`/bill/new`}>下单</Link>
                             </li>
                             <li role="presentation">
