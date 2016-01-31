@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import {resizeCanvas} from 'pica'
+import TextArea from '../components/TextArea'
 
 /**
  * 印刷品分层制作工具.
@@ -42,9 +42,10 @@ export default class PrintEditPage extends Component {
                 bufferCanvas: buffer
             });
 
+        this.initBgImage();
     }
 
-    componentDidUpdate() {
+    initBgImage = ()=>{
         const bg = require("../assets/img/ground-yellow.png");
         let img = new Image();
         img.addEventListener("load", function () {
@@ -52,68 +53,12 @@ export default class PrintEditPage extends Component {
             //this.drawBgImage(img);
         }.bind(this), false);
         img.src = bg; // Set source path
+    };
 
+    componentDidUpdate() {
+
+        //console.log('update');
     }
-
-    /**
-     * 将画布调整为image大小,并绘制.
-     *
-     * @param canvas
-     * @param img
-     */
-    drawInCanvas = (canvas, img)=> {
-        let cav = canvas;
-
-        let ctx = canvas.getContext('2d');
-
-        //var imgHeight = w / img.width * img.height;
-        cav.width = img.width;
-        cav.height = img.height;
-
-        let w = cav.width;
-        let h = cav.height;
-
-        ctx.save();
-
-        ctx.drawImage(img, 0, 0, w, h);
-
-        ctx.restore();
-    };
-
-    /**
-     * 根据img宽和高,调整画布的宽和高.
-     * 返回调整后的宽和高.
-     *
-     * @param cav 画布
-     * @param img
-     */
-    resizeCanvasToImage = (cav, img)=> {
-        let w = cav.width;
-        let h = cav.height;
-
-        var imgHeight = w / img.width * img.height;
-        cav.height = imgHeight;
-
-        return {
-            width: w,
-            height: h
-        }
-    };
-
-    drawBgImage = (img)=> {
-        let cav = this.state.currentCanvas;
-        this.resizeCanvasToImage(cav, img);
-
-        let buffer = this.state.bufferCanvas;
-        this.drawInCanvas(buffer, img);
-
-
-        //{quality: 3, alpha: true, unsharpAmount: 50, unsharpRadius: 2, unsharpRadius: 2},
-        //resizeCanvas(buffer, cav,
-        //    {quality: 3, alpha: true, unsharpAmount: 70, unsharpRadius: 0.6, unsharpThreshold: 3},
-        //    (err)=> {
-        //    });
-    };
 
     getMousePos = (canvas, evt) => {
         var rect = canvas.getBoundingClientRect();
@@ -133,19 +78,17 @@ export default class PrintEditPage extends Component {
 
     render() {
 
+        //console.log("EditPage");
         const {position:{ x, y}} = this.state;
 
         const bg = require("../assets/img/ground-yellow.png");
 
         //<img style={{width:100 + '%'}} src={bg} alt=""/>
-
         return (
             <div >
-
-                    <div className="page-header">
-                        <h1>设计上层文字</h1>
-                    </div>
-
+                <div className="page-header">
+                    <h1>设计上层文字</h1>
+                </div>
                 <div className="row">
                     <div className="col-md-9">
                         <div className="panel panel-default">
@@ -153,11 +96,13 @@ export default class PrintEditPage extends Component {
                                 <div className="insideWrapper">
                                     <canvas id="canvas" ref="canvas"
                                             className="transparentCanvas grayCanvasColor"></canvas>
-                                    <img src={bg} className="coveredImage"/>
-                                    <canvas id="cursorCanvas" ref="cursorCanvas"
-                                            className="transparentCanvas textCursor"
-                                            onMouseMove={this.handleMouseMove}></canvas>
 
+                                        <img src={bg} className="coveredImage"/>
+                                        <canvas id="cursorCanvas" ref="cursorCanvas"
+                                                className="transparentCanvas textCursor"
+                                                onMouseMove={this.handleMouseMove}></canvas>
+
+                                    <TextArea ></TextArea>
                                 </div>
                             </div>
                         </div>

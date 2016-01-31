@@ -1,0 +1,51 @@
+@keyframes upAndDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-8px);
+    }
+
+}
+
+.bounceAnimation {
+    animation: 8s upAndDown infinite;
+}
+
+.animationDelay {
+    animation-delay: 1.5s;
+}
+
+.animationDelay1s{
+    animation-delay: 800ms;
+}
+
+.packet-appear {
+    opacity: 0.01;
+
+}
+
+.packet-appear.packet-appear-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.packet-enter {
+    opacity: 0.01;
+}
+
+.packet-enter.packet-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.packet-leave {
+    opacity: 1;
+}
+
+.packet-leave.packet-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-out;
+}
+

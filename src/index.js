@@ -6,9 +6,9 @@ import configureStore from './store/configureStore'
 
 import 'bootstrap/dist/css/bootstrap.css'
 
-const store = configureStore()
+const store = configureStore();
 
 render(
   <Root store={store} />,
   document.getElementById('root')
-)
+);

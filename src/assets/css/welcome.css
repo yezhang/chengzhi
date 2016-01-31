@@ -1,0 +1,268 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+}
+
+.content {
+    position: relative;
+    /*margin: 0px;
+    padding: 0px;
+    border: 0px;*/
+    display: -webkit-flex;
+    display: flex;
+    background-color: #100000; /*#FFF*/
+    bottom: 0;
+    height: 100vh;
+}
+
+.layer {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+.flexLayout {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.girl {
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    margin: 0 auto;
+    z-index: 0;
+    background-image: url('../images/首页2_02.png');
+}
+
+/*看板*/
+.dashboard {
+    position: relative;
+    width: 456px;
+    height: 309px;
+    /*margin: auto;*/
+    top: 261px;
+    left: 310px;
+    z-index: 1;
+    background-image: url('../images/展示框.png');
+
+}
+
+/*红包的外边界*/
+.spaceBorder {
+    position: relative;
+
+    margin: auto;
+    top: 60px;
+    left: 17px;
+}
+
+/*红包, 横背景*/
+.redPacketHorizontalBg {
+    width: 269px;
+    height: 157px;
+    background-image: url('../images/产品底横.png');
+    flex: none;
+
+}
+
+/*水平居中,垂直居中的容器*/
+.flexCenterContainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /*垂直居中*/
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+/*在视觉上,让红包居中*/
+.centerPacket {
+    position: relative;
+    left: 10px;
+    top: 12px;
+}
+
+.offsetOnePacket {
+    position: relative;
+    left: -11px;
+}
+
+.offsetTwoPacket {
+    position: relative;
+    left: -22px;
+}
+
+/*红包, 竖背景*/
+.redPacketVerticalBg {
+    width: 129px;
+    height: 221px;
+    background: url('../images/产品底竖.png') no-repeat;
+    z-index: 3;
+}
+
+/*看板左侧按钮*/
+.dashboardLeftButton {
+    position: absolute;
+    width: 22px;
+    height: 46px;
+    top: 144px;
+    left: -12px;
+    background-image: url('../images/左翻页.png');
+    z-index: 4;
+}
+
+.dashboardLeftButton:hover {
+    cursor: pointer;
+}
+
+/*看板右侧按钮*/
+.dashboardRightButton {
+    position: absolute;
+    width: 22px;
+    height: 46px;
+    top: 144px;
+    right: -9px;
+    background-image: url("../images/右翻页.png");
+    z-index: 4;
+}
+
+.dashboardRightButton:hover {
+    cursor: pointer;
+    border: 2px rgba(255, 20, 39, 0.51);
+}
+
+.leftSide {
+    /*height: 768px;*/
+    -webkit-flex: 1;
+    flex: 1;
+    background: url('../images/首页2_01.png') repeat-x;
+}
+
+.rightSide {
+    /*height: 768px;*/
+    -webkit-flex: 1;
+    flex: 1;
+    background: url('../images/首页2_03.png') repeat-x;
+}
+
+/*灯笼*/
+.lantern {
+    position: absolute;
+    left: 0;
+    height: 427px;
+    width: 120px;
+    background-image: url('../images/灯笼.png');
+}
+
+/*下载按钮*/
+.download {
+    position: absolute;
+    width: 84px;
+    height: 90px;
+    top: 102px;
+    left: 7px;
+    background-image: url('../images/下载.png');
+}
+
+.download:hover {
+    cursor: pointer;
+}
+
+/*联系我们*/
+.contactUs {
+    position: absolute;
+    width: 82px;
+    height: 90px;
+    top: 244px;
+    left: 7px;
+    background-image: url('../images/电话.png');
+}
+
+.contactUs:hover {
+    cursor: pointer;
+}
+
+/*门楣*/
+.lintel {
+    position: absolute;
+    right: 0;
+    width: 322px;
+    height: 220px;
+    background-image: url('../images/门头.png');
+}
+
+/*倒计时*/
+.countDown {
+    position: absolute;
+    right: 0;
+    width: 232px;
+    height: 139px;
+    top: 480px;
+    background-image: url('../images/提示框和倒计时.png');
+}
+
+/*高兴的小黄人*/
+.happyMinionOnDesktop {
+    position: absolute;
+    width: 185px;
+    height: 134px;
+    left: 190px;
+    bottom: 131px;
+    background-image: url('../images/小黄人3.png');
+    z-index: 4;
+}
+
+/*难过的小黄人*/
+.sadMinionOnDesktop {
+    position: absolute;
+    width: 185px;
+    height: 134px;
+    left: 190px;
+    bottom: 131px;
+    background-image: url('../images/小黄人2.png');
+    z-index: 4;
+}
+
+/*购买按钮后侧的小黄人*/
+.minionOnBuyButton {
+    position: relative;
+    width: 79px;
+    height: 101px;
+    margin: 0 auto;
+    top: 35px;
+    right: -83px;
+    background-repeat: no-repeat;
+    background-image: url('../images/小黄人1.png');
+}
+
+.buyButton {
+    position: relative;
+    width: 289px;
+    height: 149px;
+    margin: 0 auto;
+    left: 27px;
+    background-image: url('../images/购买.png');
+}
+
+.buyButton:hover {
+    cursor: pointer;
+}
+
+.footer {
+    position: absolute;
+    /*height: 0px;*/
+    width: 100%;
+    top: 602px;
+    margin: 0 auto;
+    /*bottom: 0px;*/
+}

@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+//var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     devtool: 'source-map', //debug in webstorm
@@ -12,9 +13,8 @@ module.exports = {
             './src/index'
         ],
 
-        vendors: ['jquery', 'bootstrap']
+        vendor: ['jquery', 'bootstrap']
     },
-
 
     output: {
         path: path.join(__dirname, 'static'),
@@ -36,8 +36,10 @@ module.exports = {
             "window.jQuery": "jquery"
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: "vendors"
+            name: "vendor",
+            minChunks: Infinity
         }),
+        //new ExtractTextPlugin("[name].css"),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
@@ -67,6 +69,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
+                //loader: ExtractTextPlugin.extract("style-loader", "css-loader")
             },
             {
                 test: /\.(png|jpg|bmp)$/,
@@ -88,6 +91,9 @@ module.exports = {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url?limit=10000&mimetype=image/svg+xml&name=[path][name].[ext]&context=node_modules'
             }
+        ],
+        postLoaders: [
+            { loader: "transform?brfs" }
         ]
     }
 };
